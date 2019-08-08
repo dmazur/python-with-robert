@@ -7,10 +7,9 @@ level = []
 for x in range(20):
     # stwórz wiersz z dwusdzietku pustych elementów listy
     # i przypisz go do naszej tablicy
-    level.append(['.'] * 20)
+    level.append([EMPTY_FIELD] * 20)
 
-# na element 3,3 wprzypisujemy naszego gracza, znak @
-level[3][3] = '@'
+level[2][5] = '@'
 
 # drukowanie zawartości tablicy level
 for x in range(20):
@@ -18,7 +17,7 @@ for x in range(20):
         # wydrukuj element tablicy o współrzędnych x,y
         # normalnie instrukcja print przechodzi do nowej linii
         # (nowa linia to specjalny niewidoczny znak '\n')
-        print(level[x][y], end='')
+        print(level[y][x], end='')
     # tutaj na każdym końcu wyższej pętli drukujemy pusty znak
     # a print automatycznie przechodzi jeszcze do nowej linii
     print('')
