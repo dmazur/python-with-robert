@@ -1,6 +1,7 @@
 import subprocess as sp
 
 EMPTY_FIELD = '.'
+AVAILABLE_COMMANDS = ['up', 'down', 'left', 'right', 'exit']
 
 player_x = 3
 player_y = 3
@@ -38,11 +39,17 @@ while True:
 
     print("You've written " + command)
 
-    if command == 'up': player_y -= 1
-    elif command == 'down': player_y += 1
-    elif command == 'right': player_x += 1
-    elif command == 'left': player_x -= 1
-    else: print('ERROR: Wrong command')
+    if command not in AVAILABLE_COMMANDS:
+        print('ERROR: Wrong command, available commands are: ' + ', '.join(AVAILABLE_COMMANDS))
+    elif command == 'up' and player_y > 0: 
+        player_y -= 1
+    elif command == 'down' and player_y < 19: 
+        player_y += 1
+    elif command == 'right' and player_x < 19: 
+        player_x += 1
+    elif command == 'left' and player_x > 0:
+        player_x -= 1
+    else: print('ERROR: You can\'t go outside the map')
 
     level = create_level()
 
