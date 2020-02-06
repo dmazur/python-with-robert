@@ -22,28 +22,15 @@ def draw_level(level):
 check_row = 0
 check_column = 0
 counter = 0
-
+position = 0
 print(check_row, check_column)
-while counter <= 21:
-    position = level[check_row][check_column]
-    if position == '@':
-        print('found', position)
-        print(check_row, check_column)
-        counter = 22
 
-    elif check_row == 21:
-        check_column = check_column + 1
-        print(check_column)
-        check_row = 0
-        print('next column')
-        counter = counter + 1
-        print(counter)
-    else:
-        check_row = check_row + 1
-        print(check_row)
-
-player1 = Player(check_row, check_column)
-
+for y in range(22):
+    for x in range(22):
+        if level[y][x] == '@':
+            print(y, x)
+            player1 = Player(y, x)
+            break
 
 
 
@@ -63,21 +50,21 @@ while True:
     print("You've written " + command)
 
     if command == 'up' and player1.x > 0:
-        if level[player1.x + 1][player1.y] != '#':
+        if level[player1.y - 1][player1.x] != '#':
             player1.move_up()
 
     elif command == 'down' and player1.x < 20:
-        if level[player1.y][player1.x + 1] != '#':
+        if level[player1.y + 1][player1.x] != '#':
             player1.move_down()
 
 
     elif command == 'right' and player1.y < 20:
-        if level[player1.y + 1][player1.x] != '#':
+        if level[player1.y][player1.x + 1] != '#':
             player1.move_right()
 
 
     elif command == 'left' and player1.y > 0:
-        if level[player1.x - 1][player1.y] != '#':
+        if level[player1.y][player1.x - 1] != '#':
             player1.move_left()
 
 
